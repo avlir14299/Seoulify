@@ -1,0 +1,274 @@
+@charset "utf-8";
+
+$color-white: #fff;
+$color-black: #32353c;
+$color-gold: #b79b6c;
+$color-gray: #f4f4f4;
+
+@mixin mq-pc () {
+  @media (min-width:800px) {
+    @content;
+  }
+
+}
+
+@mixin flex($a: center, $j: space-between) {
+  display: flex;
+  align-items: $a;
+  justify-content: $j;
+}
+
+@mixin inner() {
+  max-width: (1200em/16);
+  width: 88.9%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@function rem($value) {
+  @return ($value/16)+rem;
+}
+
+/* BASE
+-------------------------------------------------*/
+html {
+  font-size: rem(14);
+
+  @include mq-pc() {
+    font-size: rem(16);
+  }
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: normal;
+  line-height: (31/24);
+}
+
+img {
+  width: 100%;
+  height: auto;
+  vertical-align: bottom;
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+/* BLOCK
+--------------------------------------------------*/
+.header {
+  background-color: rgba(255, 255, 255, 0.8);
+  position: fixed;
+  width: 100%;
+
+  &__inner {
+    @include inner();
+    @include flex();
+  }
+
+  &__logo {
+    width: 193px;
+  }
+
+  &__list {
+    @include flex();
+    padding: 0;
+  }
+
+  &__item {
+    padding-right: (32em/16);
+
+    &:last-child {
+      padding-right: 0;
+    }
+  }
+
+  &__nav {
+    font-weight: bold;
+    color: $color-black;
+  }
+
+  &__gold {
+    color: $color-gold;
+  }
+
+}
+
+.footer {
+  background-color: $color-black;
+  padding: (84em/14) 0;
+
+
+  &__inner {
+    @include inner();
+  }
+
+  &__list {
+    @include flex();
+    flex-direction: column;
+  }
+
+  &__copy {
+    color: $color-white;
+  }
+}
+
+.content {
+  color: $color-black;
+  margin-bottom: (56em/16);
+
+  &__title {
+    font-size: rem(14);
+    font-weight: normal;
+    margin-bottom: (28em/14);
+  }
+
+  &__goods {
+    font-size: rem(32);
+    font-weight: bold;
+    margin-bottom: (42em/32);
+
+    span {
+      color: $color-gold;
+    }
+  }
+}
+
+.btn {
+  display: block;
+  text-align: center;
+  color: $color-white;
+  font-weight: bold;
+  background-color: $color-black;
+  padding: (21em/14) 0;
+  width: (185em/14);
+  border-radius: (3em/14);
+}
+
+.card {
+  width: 46.2%;
+  color: $color-black;
+
+  &__img {
+    margin-bottom: (28em/16);
+    position: relative;
+
+    &::before {
+      content: "SALE";
+      position: absolute;
+      color: $color-white;
+      background-color: $color-gold;
+      padding: (14em/16) (32em/16);
+      border-radius: (3em/16);
+      line-height: 1;
+      top: (21em/16);
+      left: (21em/16);
+    }
+  }
+
+  &__category {
+    font-size: rem(14);
+    margin-bottom: (21em/14);
+  }
+
+  &__goods {
+    font-size: rem(21);
+    font-weight: bold;
+    margin-bottom: (10em/21)
+  }
+
+  &__self {
+    font-size: rem(21);
+    font-weight: bold;
+    color: $color-gold
+  }
+}
+
+/* INDEX
+------------------------------------------------*/
+
+.mainvisual {
+  &__img {}
+}
+
+.collection {
+  @include inner();
+  margin-top: (84em/16);
+  margin-bottom: (84em/16);
+
+  &__item {
+    &:last-child {
+      @include flex();
+    }
+  }
+}
+
+.new {
+
+  background-color: $color-gray;
+  padding: (83em/16) 0;
+
+  &__inner {
+    @include inner();
+  }
+
+  &__item {
+    &:last-child {
+      @include flex();
+    }
+  }
+}
+
+.share {
+  @include inner();
+  margin-top: (87em/16);
+  margin-bottom: (84em/16);
+  text-align: center;
+
+  &__title {
+    font-size: rem(32);
+    font-weight: bold;
+    margin-bottom: (48em/32)
+  }
+
+  &__list {
+    @include flex();
+    flex-wrap: wrap;
+  }
+
+  &__item {
+    width: 46.2%;
+
+
+    &:nth-child(-n+2) {
+      margin-bottom: (56em/16);
+    }
+  }
+}
+
+.seoul {
+  background-color: $color-gray;
+
+
+  &__inner {
+    @include inner();
+  }
+
+  &__toe {
+    background: url(../images/bg_post01.png) no-repeat center center/ cover;
+  }
+
+  &__stylist {
+    background-color: $color-gold;
+  }
+
+  .content {
+    color: $color-white;
+    padding: (112em/16) (42em/16);
+  }
+}
